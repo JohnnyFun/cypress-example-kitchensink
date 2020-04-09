@@ -706,5 +706,15 @@ cy.get('#scrollable-both').scrollTo('center', { duration: 2000 })</code></pre>
   <script src="/assets/js/vendor/bootstrap.min.js"></script>
   <script src="/assets/js/vendor/highlight.pack.js"></script>
   <script src="/assets/js/scripts.js"></script>
+
+  <script>
+    // throwing inside async func doesn't cause actions.spec.js to fail
+    (async() => {
+      throw new Error('oh my no')
+    })()
+
+    // but throwing it outside an async func fails the test as expected
+    // throw new Error('oh my no')
+  </script>
 </body>
 </html>
